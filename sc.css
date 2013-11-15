@@ -1,0 +1,81 @@
+/* replace MAP_ID with the id of your image map */
+
+#MAP_ID area {
+  z-index: 1000!important;
+}
+
+.bubble-wrap {
+  position: absolute;
+  padding-bottom: 60px;
+}
+
+.bubble-wrap > div[class*='-'] {
+	opacity: 0;
+	position: absolute;
+	visibility: hidden;
+	overflow: hidden;
+	z-index: -99;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.bubble {
+  position: relative!important;
+	padding: 15px;
+	margin: 0;
+	border: 5px solid #969595;
+	visibility: visible!important;
+	overflow: visible!important;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	color: #333;
+	z-index: 99!important;
+	background: #fff;
+  opacity: 1!important;
+  transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+
+.bubble:before {
+	content:"";
+	position: absolute;
+	bottom: -20px; /* value = - border-top-width - border-bottom-width */
+	left: 15px; /* controls horizontal position */
+  border-width: 20px 20px 0;
+	border-style: solid;
+  border-color: #969595 transparent;
+  /* reduce the damage in FF3.0 */
+  display: block; 
+  width: 0;
+}
+
+/* creates the smaller  triangle */
+.bubble:after {
+	content:"";
+	position: absolute;
+	bottom: -13px; /* value = - border-top-width - border-bottom-width */
+	left: 22px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+	border-width: 13px 13px 0;
+	border-style: solid;
+	border-color: #fff transparent;
+  /* reduce the damage in FF3.0 */
+  display: block; 
+  width: 0;
+}
+
+ul.bubble-list {
+  list-style-type: none;
+  padding-left: 14px;
+  margin: -13px -2px;
+}
+
+.bubble-list li {
+  padding-left: 0;
+  margin-left: -1em;
+}
