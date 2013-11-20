@@ -1,39 +1,36 @@
-/* replace MAP_ID with the id of your image map */
-
-#MAP_ID area {
-  z-index: 1000!important;
-}
-
+/* CSS INFO BUBBLES */
 .bubble-wrap {
   position: absolute;
-  padding-bottom: 60px;
+  padding-bottom: 15px;
 }
-
-.bubble-wrap > div[class*='-'] {
-	opacity: 0;
-	position: absolute;
-	visibility: hidden;
-	overflow: hidden;
-	z-index: -99;
+.bubble-wrap > span {
+  display: inline-block;
+  opacity: 0;
+  margin-bottom: 5px;
+}
+.bubble-wrap > span:not(.bubble) {
+  position: absolute;
+  z-index: -99;
   transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 }
 
-.bubble {
+span.bubble {
+  color: #333;
+  width: auto;
+  height: auto;
   position: relative!important;
-	padding: 15px;
-	margin: 0;
-	border: 5px solid #969595;
-	visibility: visible!important;
-	overflow: visible!important;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	color: #333;
-	z-index: 99!important;
-	background: #fff;
-  opacity: 1!important;
+  padding: 15px;
+  border: 5px solid #969595;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  visibility: visible!important;
+  overflow: visible!important;
+  z-index: 99!important;
+  background: #fff;
+  opacity: 1;
   transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -43,27 +40,27 @@
 }
 
 .bubble:before {
-	content:"";
-	position: absolute;
-	bottom: -20px; /* value = - border-top-width - border-bottom-width */
-	left: 15px; /* controls horizontal position */
+  content:"";
+  position: absolute;
+  bottom: -20px; /* value = - border-top-width - border-bottom-width */
+  left: 15px; /* controls horizontal position */
   border-width: 20px 20px 0;
-	border-style: solid;
+  border-style: solid;
   border-color: #969595 transparent;
   /* reduce the damage in FF3.0 */
   display: block; 
   width: 0;
 }
 
-/* creates the smaller  triangle */
+/* creates the smaller triangle */
 .bubble:after {
-	content:"";
-	position: absolute;
-	bottom: -13px; /* value = - border-top-width - border-bottom-width */
-	left: 22px; /* value = (:before left) + (:before border-left) - (:after border-left) */
-	border-width: 13px 13px 0;
-	border-style: solid;
-	border-color: #fff transparent;
+  content:"";
+  position: absolute;
+  bottom: -13px; /* value = - border-top-width - border-bottom-width */
+  left: 22px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width: 13px 13px 0;
+  border-style: solid;
+  border-color: #fff transparent;
   /* reduce the damage in FF3.0 */
   display: block; 
   width: 0;
