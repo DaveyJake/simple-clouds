@@ -1,49 +1,39 @@
 jQuery(function($) {
 
-// initialize SC for elements of a designated class
-// in conjunction with an image map
-
-  function loadBubbleByClass(c,t,l) {
+  function loadBubble(c,t,l) {
+    var area = $(SAME_CLASSNAME_AS_BUBBLE-WRAP_CHILD);
+    var bubble = $(SAME_CLASSNAME_AS_MAP_AREA);
   
-    $('area[class="'+c+'"]').mouseover(function(){
-      $('div[class="'+c+'"]').addClass('bubble').parent().siblings().children().removeClass('bubble');
-      $('.'+c+'.bubble').parent().css({
-        'top'   : t+'px',
-        'left'  : l+'px'
-      });
-    });
-
-    $('area[class="'+c+'"]').mouseout(function(){
-      $('.bubble').parent().hover(
-        function(){
-          $('.bubble').show();
-        },
-        function(){
-          $('.bubble').removeClass('bubble');
-        }
-      );
-    });
-    
-    $('.bubble').parent().hover(
-      function(){
-        $('area[class="'+c+'"]').mouseover(
-          function(){$('.bubble').show();}
-        );
+    $(area).hover(
+      function(e){
+        e.preventDefault();
+        $(bubble).addClass('bubble').parent().siblings().children().removeClass('bubble');
+        $('.'+c+'.bubble').parent().css({
+          'top'   : t+'px',
+          'left'  : l+'px'
+        });
       },
-      function() {
-        $('.bubble').removeClass('bubble');
+      function(){
+        $('.bubble').removeClass('bubble');      
+      }
+    );
+    $('.bubble-wrap').hover(
+      function(e){
+        e.preventDefault();
+        $(bubble).addClass('bubble').show();
+        $(this).siblings().children().removeClass('bubble');       
+      },
+      function(){
+        $('.bubble').removeClass('bubble');        
       }
     );
     
-    $('img#IMG_ID').mouseout(function(){
-      $('.bubble').removeClass('bubble');
-    });
-    
   }
   
-  // position elements by class using the className
-  // and the numerical values for top & left positioning
-  
-  loadBubbleByClass(CLASSNAME,TOP,LEFT);
+  loadBubble(CLASS_OF_BUBBLE-WRAP_CHILD,TOPpx,LEFTpx);
+
+  $('img#ID_OF_IMG').mouseout(function(){
+    $('.bubble').removeClass('bubble');
+  });
   
 });
