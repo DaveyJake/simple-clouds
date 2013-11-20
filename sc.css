@@ -76,3 +76,8 @@ ul.bubble-list {
   padding-left: 0;
   margin-left: -1em;
 }
+
+/* ensure image map region can be hoevered on */
+map > area {
+  z-index: 1000!important;
+}
